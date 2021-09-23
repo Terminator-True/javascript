@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta--charset="uf-8"/>
+        <title>Javascript</title>
+
+    </head>
+    <body>
+        <h1>Javascript exercici 1</h1>
+
+            <button onclick=esigual()>exercici 1</button>
+            <button onclick=mitjana()>exercici 2</button>
+            <button onclick=multiple()>exercici 3</button>
+
+
+
+        <script>
+            //Feu un programa que demani dos nombres i ens digui amb una alerta, si són iguals,o bé quin és el més gran i quin és el més petit. (feu el programa robust)
+            //Afegeix que si el nombres no són de tipus nombre o bé són negatius, que els torni a demanar. Ajuda isNaN();
+
+            function esigual() {  
+                let num1,num2;  
+                do{
+                    num1=prompt("Numero 1 ?")
+                    num2=prompt("Numero 2 ?")
+                }while(isNaN(num1) || isNaN(num2) && num1<0 || num2<0)
+
+                if (num1 == num2) {
+                    alert("Els numeros son iguals")
+
+                } else{
+                    if (num1>num2) {
+                        alert("El primer numero es mes gran que el segon ")
+                    }else{
+                        alert("El segon es mes gran que el primer")
+
+                    }
+                }
+            }
+            //Utilitzant un bucle demana a l’usuari  nombres introduïts per teclat fins que introdueix un nombre negatiu. És a dir, 
+            function mitjana() {
+                let num=0,total=0,i =0;
+                do {
+                    num=prompt("Numero: ");
+                    num=Number(num)
+                    if (isNaN(num)){
+                        alert("No es un numero")    
+                    } else{
+                        i++
+                        total+=num 
+                    }
+                } while (num>0);    
+                alert("La mitjana es de "+total/i)
+            }   
+            //Mostra en la pàgina tots els nombres imparells i múltiples de 5 o de 7 entre dos nombres que l’usuari introdueix per teclat. 
+            //Fés que el programa sigui robust.
+            //Mostrar per la pàgina web tots els divisors d’un nombre positiu que l’usuari introdueix per teclat.
+            function multiple(){
+                let num1,num2,inici;  
+                do{
+                    num1=prompt("Numero 1 ?")
+                    num2=prompt("Numero 2 ?")
+                }while(isNaN(num1) || isNaN(num2) && num1<0 || num2<0)
+
+                if (num1 == num2) {
+                    alert("Els numeros son iguals")
+                }else{
+                    if (num1>num2) {
+                        let final=Number(num1)-Number(num2)
+                        let inici=num2
+                    }else{
+                        let final=Number(num2)-Number(num1)
+                        let inici=num1
+                    }
+                    inici = Number(inici)
+                    for (let i = inici; i < final; i++) {
+                            
+                            if (i%2!=0) {
+                                if (i%5==0||i%7==0) {
+                                    document.write(i,"<br>")       
+                                }
+                            }
+                        }
+                }
+            }
+        </script>
+    </body>
+</html>
