@@ -12,7 +12,10 @@
             <button onclick=esigual()>exercici 1</button>
             <button onclick=mitjana()>exercici 2</button>
             <button onclick=multiple()>exercici 3</button>
-            <button onclick=multiple()>exercici 4</button>
+            <button onclick=divisors()>exercici 4</button>
+            <button onclick=taula_multiplicar()>exercici 5</button>
+            <button onclick=calculadora()>exercici 6</button>
+
 
 
 
@@ -62,7 +65,7 @@
                 do{
                     num1=prompt("Numero 1 ?")
                     num2=prompt("Numero 2 ?")
-                }while(isNaN(num1) || isNaN(num2) && num1<0 || num2<0)
+                }while(isNaN(num1) || isNaN(num2) || num1<0 || num2<0)
 
                 if (num1 == num2) {
                     alert("Els numeros son iguals")
@@ -87,7 +90,55 @@
             }
             //Mostrar per la pàgina web tots els divisors d’un nombre positiu que l’usuari introdueix per teclat.
             function divisors() {
-                
+                do {
+                    num = prompt("Posa un número: ")
+                } while (isNaN(num) || num<0)
+
+                for (let i = 0; i < num; i++) {
+                    if (num%i==0) {
+                        document.write(i,"<br>")       
+                    }
+                    
+                }
+                document.write(num)       
+
+            }
+            //Mostra per pantalla la taula de multiplicar d’un nombre que l’usuari introdueix per teclat. 
+            //El nombre ha de ser positiu i entre l’1 i el 10.
+            function taula_multiplicar() {
+                let num;
+                do {
+                    num = prompt("Posa un número: ")
+                } while (isNaN(num) && num<0 && num>10)
+                    
+                for (let i = 0; i < 11; i++) {
+                    document.write(num,"x",i,"=",num*i,"<br>")
+                }
+            }
+            //Fes una calculadora demani 2  nombres per pantalla, i després demani l’operació aritmètica a realitzar (+ - * / %) i 
+            //finalment mostri amb una alerta el resultat.
+            function calculadora() {
+                let num,operacio,resultat;
+                do {
+                    num1 = prompt("Posa un número: ")
+                    num2 = prompt("Posa un altre número: ")
+                    operacio = prompt("*/-+")
+                } while (isNaN(num) && num<0)
+
+                switch (operacio) {
+                    case "*":
+                    alert("resultat: "+num1*num2)
+                        break;
+                    case "+":
+                    alert("resultat: "+num1+num2)
+                        break;
+                    case "/":
+                    alert("resultat: "+num1/num2)
+                        break;
+                    case "-":
+                    alert("resultat: "+num1-num2)
+                        break;
+                }
             }
         </script>
     </body>
