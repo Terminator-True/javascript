@@ -16,9 +16,6 @@
             <button onclick=taula_multiplicar()>exercici 5</button>
             <button onclick=calculadora()>exercici 6</button>
 
-
-
-
         <script>
             //Feu un programa que demani dos nombres i ens digui amb una alerta, si són iguals,o bé quin és el més gran i quin és el més petit. (feu el programa robust)
             //Afegeix que si el nombres no són de tipus nombre o bé són negatius, que els torni a demanar. Ajuda isNaN();
@@ -123,7 +120,7 @@
                     num1 = prompt("Posa un número: ")
                     num2 = prompt("Posa un altre número: ")
                     operacio = prompt("*/-+")
-                } while (isNaN(num) && num<0)
+                } while (isNaN(num1) || isNaN(num2) || num2<0 || num1<0)
 
                 switch (operacio) {
                     case "*":
