@@ -4,6 +4,7 @@
     do {
         num=prompt("Numeros: ")
     } while (isNaN(num));
+    //Agafem el string num i el passem a array amb split, li donem la volta amb reverse i amb el join ho tornem a convertir en str
     document.write(num.split("").reverse().join(""))
 
 }
