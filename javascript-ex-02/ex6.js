@@ -6,6 +6,6 @@ function divisa() {
     function Mostra(euros,euroDolar,euroYen,euroBit) {
         document.write(euros+" euros"+" | "+euroYen(euros)+" Yen" +" | "+euroBit(euros)+" Bitcoin"+" | "+euroDolar(euros)+" Dolars")
     }
-
+    //Fem la crida de la funció mostra amb les funcions de fletxa com a parametre
     Mostra(euros,EuroDolar = euros => euros*1.16,EuroYen = euros =>euros*128.77134,EuroBit = euros => euros*0.000026)
 }
