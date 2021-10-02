@@ -4,7 +4,5 @@ function Caracter() {
     let lletra=prompt("Posa una lletra")
     let p=prompt("Posa un string")
     lenp=p.length
-    console.log(p.split(lletra))
-
-
+    console.log(p.split(lletra).length-1)
 }
