@@ -7,13 +7,21 @@
 
 senars = 0
 function imprimir(ll) {
-    
-    ll.forEach(senars(item))
 
-    senars = item => {if(item%2!=0)senars+=1}
-    mitjana => (ll.reduce((x,y) => x+=y))/ll.length
-    gran => Math.max.apply(ll)
-    petit => Math.min.apply(ll)
+    var senarnum = 0;
 
-    console.log(mitjana,gran(),petit(),senars())
+    var senars = (ll) => {
+        for (let i = 0; i < ll.length; i++) {
+            if(ll[i]%2!=0){
+                senarnum+=1;
+            }
+        }
+        return senarnum;
+    }
+    var mitjana = ll => (ll.reduce((x,y) => x+=y))/ll.length
+    var gran = ll => Math.max.apply(null,ll)
+    var petit = ll => Math.min.apply(null,ll)
+
+    console.log(mitjana(ll),gran(ll),petit(ll),senars(ll))
+
 }
