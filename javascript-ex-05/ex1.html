@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS DOM paragraph style</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+    </style>
+<script>
+    function js_style() {
+        const element = document.getElementById("jsstyle");
+        element.style.color= 'rgb(0,250,0)';
+        element.style.fontSize='14px';
+        element.style.font='"Raleway", sans-serif';
+    }
+</script>
+</head> 
+<body>
+<p id ='text'>JavaScript Exercises</p> 
+<div>
+<button id="jsstyle" onclick="js_style()">Style</button>
+</div>
+</body>
+</html>

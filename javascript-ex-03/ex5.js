@@ -4,16 +4,17 @@
 //=> una funció que retorna el més gran
 //=>una funció que retorna el més petit
 
-
 senars = 0
-function imprimir(ll) {
+function operacions(ll) {
+    const reducer = (previousValue, currentValue) => previousValue + currentValue;
+    const Dsenars = num => {if(num%2!=0)senars+=1}  
+    const mitjana = ll => ll.reducer()/ll.length    
+    const gran = ll => Math.max.apply(ll)
+    const petit = ll => Math.min.apply(ll)
+ 
     
-    ll.forEach(senars(item))
 
-    senars = item => {if(item%2!=0)senars+=1}
-    mitjana => (ll.reduce((x,y) => x+=y))/ll.length
-    gran => Math.max.apply(ll)
-    petit => Math.min.apply(ll)
 
-    console.log(mitjana,gran(),petit(),senars())
+    console.log(mitjana(),gran(),petit(),senars)
+
 }

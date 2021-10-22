@@ -1,0 +1,40 @@
+
+<!-- Escriviu un formulari on indiqueu una fila i una columna, i un text, 
+    i amb una funció JavaScript que accepti fila, columna (per identificar una cel·la concreta) 
+    i una cadena  actualitzeu el contingut d’aquesta cel·la. -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset=utf-8 />
+    <title>Change the content of a cell</title>
+    </head>
+    <body>
+    <table id="myTable" border="1">
+    <tr>
+    <td>Row1 cell1</td>
+    <td>Row1 cell2</td>
+    </tr>
+    <tr>
+    <td>Row2 cell1</td>
+    <td>Row2 cell2</td>
+    </tr>
+    <tr>
+    <td>Row3 cell1</td>
+    <td>Row3 cell2</td>
+    </tr>
+    </table>
+    <form>
+    fila:<input type="number" id="fila" value="fila">
+    columna:<input type="number" id="columna" value="columna">
+    <input type="text" id="text" value="Text">
+    <input type="button" onclick="changeContent() " value="Change content">
+    
+    <script>
+            function changeContent() {
+                var texts = document.getElementById("text").value;
+                var fila = document.getElementById("fila").value;
+                var columna = document.getElementById("columna").value;
+    
+                document.getElementById("myTable").rows[fila].cells[columna].innerHTML = texts;
+            }
+    </script>
