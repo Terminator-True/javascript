@@ -1,0 +1,133 @@
+<!-- 
+-El joc té un tauler (pots fer una taula, o bé amb div) de 4 x 3.
+-Hi ha 6 parelles d’imatges, colors, caràcters  iguals que es distribueixen per tot el tauler.
+-Inicialment les imatges estaran totes tapades 
+-Un botó inici permetrà començar el joc 
+(si es prem al mig d’una partida demanarà si es vol tornar a iniciar el joc, sinó comença la partida)
+-Quan el jugador comenci el joc podrà destapar 2 caselles, si els items coincideixen serà un match, 
+i les caselles quedaran destapades, si les caselles no coincideixen després de 1-2 segons es taparan.
+-El joc acaba quan s’hagin destapat totes les caselles o bé si després 
+d’1 minut el jugador no ha aconseguit destapar les caselles
+-
+Has de repartir els items aleatòriament en cada partida
+Utilitza estats per cada casella (tapada, destapada)-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECTE JAVASCRIPT</title>
+    <style>
+      html * {
+        font-family: "Courier New", Courier, monospace !important;
+      }
+      table,
+      td {
+        border: 1px solid;
+        margin: 10px;
+        
+        padding: 80px;
+        font-size:50px;
+        transition: transform 0.1s;
+        background-color: black;
+        color: cadetblue;
+      }
+      td:active{
+        transform: rotateY(90deg);
+      }
+      
+
+    </style>
+</head>
+<body>
+    <span id="countdown"></span>
+
+    <div style="width: 120px;"  id="taula"></div>
+
+    <button style="width: 105px" id="inici" >Inici</button>
+
+    <script>
+  //array parells aleatorio
+        function Genera_llista() {
+            var letras = Array("G", "L", "D", "R", "B", "I","G", "L", "D", "R", "B", "I");
+            var Total = letras.length;
+            var llistaFinal =[];
+            for (let i=0; i < Total; i++) {
+                random = Math.floor(Math.random()*(letras.length));
+                llistaFinal.push(letras[random]);
+                letras.splice(random, 1);
+            }
+            return llistaFinal
+        }
+        //print taula
+        function Crea_taula(contingut) {
+            fila=0;
+            document.write("<table id='taula'>")
+            document.write("<tr>")
+            for (let i = 0; i < contingut.length; i++) {
+                fila++;
+                row=contingut[i]
+                document.write("<td id='"+i+"' onclick=canvia("+i+")>?</td>")
+                if (fila==4) {
+                    fila=0;
+                    document.write("</tr>")
+                    document.write("<tr>")
+                }else if(i == contingut.length-1){
+                    document.write("</tr>")
+                }
+            }
+            document.write("</table>")
+        }
+        //destapar
+        /*function destapar() {
+            var input = document.getElementsByClassName("tapar");
+            console.log(input)
+            input.addEventListener("click",function(){
+                console.log("Rata")
+            });
+        }*/
+        //Cuenta atras
+        window.onload = updateClock;
+
+        var totalTime = 60;
+
+        function updateClock() {
+            document.getElementById('countdown').innerHTML = totalTime;
+            if(totalTime==0){
+                console.log('Game Over');
+            }else{
+                totalTime-=1;
+                setTimeout("updateClock()",1000);
+
+            }
+            
+        }
+        var llista=Genera_llista();
+        var clicks=0;
+        var clickats=[];
+        function canvia(id) {
+            if (!clickats.includes(id)) {
+                clicks++;
+                clickats.push(id)
+            }
+            if (document.getElementById(id).textContent=="?") {
+                if (clicks<3) {
+                    document.getElementById(id).innerHTML=llista[id]
+                    Document.getElementById(id).style.propety = "transform: rotateY(180deg)"
+                }else{
+                    if (llista[clickats[0]]!=llista[clickats[1]]) {
+                        document.getElementById(clickats[0]).innerHTML="?"
+                        document.getElementById(clickats[1]).innerHTML="?"
+                    }
+                    clickats=[]; 
+                    clicks=0;
+                }
+            }
+
+        }
+
+        Crea_taula(llista)
+    </script>
+</body>
+</html>
