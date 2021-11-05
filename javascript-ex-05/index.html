@@ -18,7 +18,7 @@
     <h1>La Calculadora</h1>
     <textarea name="" id="barra" cols="5" rows="1" disabled></textarea>
 
-    <div id="boto" style="width: 75px;">
+    <div id="boton" style="width: 75px;">
     </div>
     <script>
         const botons=[7,8,9,"*",4,5,6,"-",1,2,3,"+",0,"C","=","/"];
@@ -27,7 +27,7 @@
             var para = document.createElement("button");
             var t = document.createTextNode(boto);
             para.appendChild(t);
-            document.getElementById("boto").appendChild(para);
+            document.getElementById("boton").appendChild(para);
         });
         var barra = document.getElementById("barra");
         var input = document.getElementsByTagName("button");

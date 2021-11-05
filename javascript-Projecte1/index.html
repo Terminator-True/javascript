@@ -29,15 +29,13 @@ Utilitza estats per cada casella (tapada, destapada)-->
         
         padding: 80px;
         font-size:50px;
-        transition: transform 0.1s;
+        transition: transform 0.2s;
         background-color: black;
         color: cadetblue;
       }
       td:active{
-        transform: rotateY(90deg);
+        transform: rotateY(180deg);
       }
-      
-
     </style>
 </head>
 <body>
@@ -45,10 +43,19 @@ Utilitza estats per cada casella (tapada, destapada)-->
 
     <div style="width: 120px;"  id="taula"></div>
 
-    <button style="width: 105px" id="inici" >Inici</button>
+    <button style="width: 105px" id="inici" onclick="boto()">Inici</button>
 
     <script>
-  //array parells aleatorio
+  //array parells aleatori
+        function boto() {
+            if (confirm("Vols reinicar el joc?")) {
+                window.location.reload(true)
+            }
+        }
+        function volta(clickats) {
+            document.getElementById(clickats[0]).innerHTML="?"
+            document.getElementById(clickats[1]).innerHTML="?"
+        }
         function Genera_llista() {
             var letras = Array("G", "L", "D", "R", "B", "I","G", "L", "D", "R", "B", "I");
             var Total = letras.length;
@@ -79,54 +86,39 @@ Utilitza estats per cada casella (tapada, destapada)-->
             }
             document.write("</table>")
         }
-        //destapar
-        /*function destapar() {
-            var input = document.getElementsByClassName("tapar");
-            console.log(input)
-            input.addEventListener("click",function(){
-                console.log("Rata")
-            });
-        }*/
         //Cuenta atras
         window.onload = updateClock;
-
         var totalTime = 60;
-
-        function updateClock() {
+        function updateClock(){
             document.getElementById('countdown').innerHTML = totalTime;
             if(totalTime==0){
-                console.log('Game Over');
+                alert("GAME OVER")
+                window.location.reload(true)
             }else{
                 totalTime-=1;
                 setTimeout("updateClock()",1000);
-
             }
-            
         }
         var llista=Genera_llista();
         var clicks=0;
         var clickats=[];
         function canvia(id) {
-            if (!clickats.includes(id)) {
+            if (!clickats.includes(id)){
                 clicks++;
                 clickats.push(id)
             }
             if (document.getElementById(id).textContent=="?") {
                 if (clicks<3) {
                     document.getElementById(id).innerHTML=llista[id]
-                    Document.getElementById(id).style.propety = "transform: rotateY(180deg)"
-                }else{
-                    if (llista[clickats[0]]!=llista[clickats[1]]) {
-                        document.getElementById(clickats[0]).innerHTML="?"
-                        document.getElementById(clickats[1]).innerHTML="?"
+                }else{            
+                    if (llista[clickats[0]]!=llista[clickats[1]]){
+                        setTimeout(volta(clickats), 2000)
                     }
-                    clickats=[]; 
+                    clickats=[];
                     clicks=0;
                 }
             }
-
         }
-
         Crea_taula(llista)
     </script>
 </body>
