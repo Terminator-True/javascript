@@ -12,7 +12,7 @@ d’1 minut el jugador no ha aconseguit destapar les caselles
 Has de repartir els items aleatòriament en cada partida
 Utilitza estats per cada casella (tapada, destapada)-->
 
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -117,6 +117,20 @@ Utilitza estats per cada casella (tapada, destapada)-->
                     clickats=[];
                     clicks=0;
                 }
+            }
+            comprova()
+        }
+        function comprova() {
+            voltejat=0;
+            for (let i = 0; i < 11; i++) {
+                if (document.getElementById(i).textContent!="?") {
+                    voltejat++;
+                    if (voltejat==11) {
+                        alert("Enhorabona!!")
+                        window.location.reload(true)
+                    }
+                }
+                
             }
         }
         Crea_taula(llista)
