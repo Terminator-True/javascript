@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript-Tasca1</title>
+    <title>Javascript-Tasca1-exercici1</title>
     <script>
         function cotxe(marca,velocitat) {
             this.marca = marca;
@@ -12,18 +12,24 @@
         }
 
         cotxe.prototype.accelerar = function(velocitat) {
-             return this.velocitat+10+" km/h"
+            this.velocitat=this.velocitat+10
         }
 
         cotxe.prototype.fre = function(velocitat) {
-            return this.velocitat-5+" km/h"
+            if (this.velocitat-5<=0) {
+                this.velocitat=0
+            }else{
+                this.velocitat=this.velocitat-5
+            }
         }
-        var cotxes = [new cotxe("Porsche",80), new cotxe("Seat",50),new cotxe("Ford",120), new cotxe("volkswagen",30),new cotxe("Tesla",160)]
+        var cotxes = [new cotxe("Porsche",100), new cotxe("Seat",50),new cotxe("Ford",120), new cotxe("volkswagen",30),new cotxe("Tesla",160)]
         console.log(cotxes)
         cotxes.forEach(element => {
             console.log(element.marca+" Velocitat inicial: "+element.velocitat+" km/h")
-            console.log(element.accelerar(element.velocitat))
-            console.log(element.fre(element.velocitat))
+            //element.accelerar(element.velocitat)
+            console.log(element.velocitat+" km/h")
+            element.fre(element.velocitat)
+            console.log(element.velocitat+" km/h")
         });
     </script>
 </head>

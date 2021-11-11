@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript-Tasca1-exercici2</title>
+    <script>
+        class cotxe{
+            constructor(marca,velocitat){
+                name = name;
+                this.marca=marca;
+                this.velocitat=velocitat;
+            }
+            accelerar(){
+                this.velocitat=this.velocitat+10
+            }
+            fre(){
+                if (this.velocitat-5<=0) {
+                    this.velocitat=0
+                }else{
+                    this.velocitat=this.velocitat-5
+                }
+            }
+            //getter
+            getVelocitat(){
+                return this.velocitat
+            }
+        }
+        class Ev extends cotxe{
+            constructor(marca,velocitat,carrega){
+                super(marca,velocitat);
+                this.carrega=carrega;
+                this.chargeTo;
+            }
+            chargeBattery(chargeTo){
+                this.carrega=90
+            }
+            accelerar_E(){
+                this.velocitat=this.velocitat+20
+                this.carrega--;
+                console.log("Tesla anirá a "+this.velocitat+" amb una cárrega de "+this.carrega+"%")
+            }
+        }
+        var cotxes = [new cotxe("Porsche",100), new cotxe("Seat",50),new cotxe("Ford",120), new cotxe("volkswagen",30)]
+        console.log(cotxes)
+        cotxes.forEach(element => {
+            console.log(element.marca+" Velocitat inicial: "+element.velocitat+" km/h")
+            element.accelerar(element.velocitat)
+            console.log(element.getVelocitat()+" km/h")
+            element.fre(element.velocitat)
+            console.log(element.getVelocitat()+" km/h")
+        });
+        Tesla=new Ev("Tesla",160,50)
+        Tesla.accelerar_E()
+        Tesla.fre()
+        Tesla.fre()
+        Tesla.fre()
+        Tesla.accelerar_E()
+        Tesla.chargeBattery()
+        Tesla.accelerar_E()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
