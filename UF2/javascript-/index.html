@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript-Tasca1</title>
+    <script>
+        function cotxe(marca,velocitat) {
+            this.marca = marca;
+            this.velocitat = velocitat;
+        }
+
+        cotxe.prototype.accelerar = function(velocitat) {
+             return this.velocitat+10+" km/h"
+        }
+
+        cotxe.prototype.fre = function(velocitat) {
+            return this.velocitat-5+" km/h"
+        }
+        var cotxes = [new cotxe("Porsche",80), new cotxe("Seat",50),new cotxe("Ford",120), new cotxe("volkswagen",30),new cotxe("Tesla",160)]
+        console.log(cotxes)
+        cotxes.forEach(element => {
+            console.log(element.marca+" Velocitat inicial: "+element.velocitat+" km/h")
+            console.log(element.accelerar(element.velocitat))
+            console.log(element.fre(element.velocitat))
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
