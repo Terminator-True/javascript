@@ -31,10 +31,9 @@
             constructor(marca,velocitat,carrega){
                 super(marca,velocitat);
                 this.carrega=carrega;
-                this.chargeTo;
             }
             chargeBattery(chargeTo){
-                this.carrega=90
+                this.carrega=chargeTo
             }
             accelerar_E(){
                 this.velocitat=this.velocitat+20
@@ -57,7 +56,7 @@
         Tesla.fre()
         Tesla.fre()
         Tesla.accelerar_E()
-        Tesla.chargeBattery()
+        Tesla.chargeBattery(90)
         Tesla.accelerar_E()
     </script>
 </head>
