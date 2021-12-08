@@ -1,4 +1,4 @@
-// 1 Scroll hacia al final
+// 1 
 $(document).ready(function() {
     $(".down").click(function() {
         $('html, body').animate({
@@ -6,13 +6,13 @@ $(document).ready(function() {
         }, 500);
     });
 });
-// 2 Disable right click
+// 2 
 $(document).ready(function() {
     $("body").on("contextmenu",function(){
        return false;
     }); 
 });
-// 3 submit disable hasta acceptaar checkbox
+// 3 
 $(document).ready(function() {
     $(".check").click(function(){
         if ($(this).is(":checked")){
@@ -22,14 +22,14 @@ $(document).ready(function() {
         }
     }); 
 });
-// 4 text intermiten
+// 4 
 function blink(){
     var color="#FF00FF,#FF00CC,#FF0099,#FA9066,#FF0033,#FF0000";
     color=color.split(",");
     $(".blink").css('color',color[parseInt(Math.random()*color.length)]);
 }
 setInterval("blink()",200);
-// 5 liimit caracter
+// 5 
 $(document).ready(function() {
     var maxLength = 15;
     $('#textarea').keyup(function() {
@@ -37,10 +37,8 @@ $(document).ready(function() {
         $('#rchars').text(textlen);
     });
 });
-// 6 mostrar tipo clikcs
-// $("body").click(function(){
-//     console.log("one click");
-// });
+// 6 
+
 $(document).ready(function() {
     $("body").dblclick(function(){
         console.log("doble click");
@@ -62,35 +60,32 @@ $(document).ready(function() {
     });
 });
 
-// 7 Deshabilitar link
+// 7 
 $(document).ready(function() {
     $( '.dislink' ).click(function() {
         $( ".dislink" ).removeAttr( 'href' );
     });
 });
-// 8 els segons entre click
+// 8 
 $(document).ready(function() {
     $(".clik_segons").click(function(event) {
         $(".segons").text(event.timeStamp);
     });
 });
-// 9 pelota rebotando
+// 9 
 i=0;
 $(document).ready(function(){
     $(".tirar").click(function(){
         function animacion(x=300,y=200,z=10) {
             if (x>0 && y>=0) {
                 $('.pilota').animate({
-                marginTop: '+='+x,
-                }, 500, function() {
+                    marginLeft: '+='+z,
+                    marginTop: '+='+x,
+                }, 400, function() {
                 $('.pilota').animate({
                     marginTop: '-='+y,
                 }, 500, function() {
-                $('.pilota').animate({
-                    marginLeft: '+='+z,
-                }, 50, function() {
                     animacion(x-=100,y-=100,z+=10)     
-                });
                 });
                 });
             }
