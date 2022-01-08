@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-<title>Page Title</title>
+<title>2DJuegos</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -11,35 +11,73 @@
     <script src="main.js"></script>
 </head>
 <body>
+<div id="main">
+  <div id="header" class="header">
+    <h1>2D Juegos</h1>
+    <p>Una web de videojuegocs</p>
+  </div>
 
-<div class="header">
-  <h1>2D Juegos</h1>
-  <p>Una web de videojuegocs</p>
-</div>
+  <div class="navbar">
+    <button><a href="#">Home</a></button>
+    <button onclick="document.getElementById('clock').style.display='block';currentTime();">Rellotge</button>
+    <button class="right" onclick="document.getElementById('form').style.display='block';document.getElementById('principal').style.display='none'"><a href="#form">Registrar-se</a></button>
 
-<div class="navbar">
-  <a href="#">Home</a>
-  <a href="#">About us</a>
-  <a href="#">Contact</a>
-  <a href="#" class="right">Log-in</a>
-</div>
-
-<div id="row">  
-  <div class="main">
-    <h2>Ofertes</h2>
-      <div class="slider" style="height:200px;">
-        <div style="height:200px;"><img src="Images/slide1.jpg" alt="" srcset=""></div>
-        <div style="height:200px;"><img src="Images/slide-2.jpg" alt="" srcset=""></div>
+  </div>
+  <div class="sidenav">
+    <button id="red" onclick="cambiar_color('#ee5b41') "></button>
+    <button id="blue" onclick="cambiar_color('#4186ee') "></button>
+    <button id="green" onclick="cambiar_color('#4fee41') "></button>
+    <button id="dark" onclick="cambiar_color('#272727') "></button>
+  </div>
+  <div id="row">
+    <div class="main">
+      <div id="clock" class="mes" style="display: none;">
       </div>
-    <br>
-    </div>
-    <div id="id01" class="mes">
-    </div>
-</div>
-<button onclick="topFunction()" id="myBtn" title="Anar adalt"> <i class="arrow up"></i> </button>
+        <div class="slider" style="height:200px;">
+          <div style="height:400px;"><img src="Images/slide1.jpg" alt="" srcset=""></div>
+          <div style="height:400px;"><img src="Images/slide-2.jpg" alt="" srcset=""></div>
+        </div>
+        <div id="form">
+          <form novalidate style="border:1px solid #ccc">
+            <div class="container">
+              <h1>Registre</h1>
+              <hr>
+              <label for="Nom"><b>Nom</b></label>
+              <input type="text" placeholder="Nom" id="nom" >
 
-<div class="footer">
-  <h2>Footer</h2>
+              <label for="Cognoms"><b>Cognoms</b></label>
+              <input type="text" placeholder="Cognoms" id="cognoms" >
+
+              <label for="email"><b>Email</b></label>
+              <input type="text" placeholder="Email" id="email" >
+              <p id="emailError"></p>
+              <select id="Genere" id="Genere">
+                <option value='Home'>Home</option>
+                <option value='Dona'>Dona</option>
+                <option value='Altres'>Altres</option>
+              </select><br>
+              <label for="Data Naixament"><b>Data Naixament</b> </label>
+              <input type="text" placeholder="data" id="data" >
+
+              <label for="Edat"><b>Edat</b> </label>
+              <input type="text" placeholder="Edat" id="edat" >
+              <div class="clearfix">
+                <button type="submit" class="signupbtn" onclick="validar()" >Enviar</button>
+                <button type="button" class="cancelbtn" onclick="document.getElementById('form').style.display='none';document.getElementById('principal').style.display='block'">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div id="principal">
+          <h1 >Ofertes</h1>
+        </div>
+      <br>
+      </div>
+      <div id="more" class="mes">
+      </div>
+  </div>
+  <button onclick="topFunction()" id="myBtn" title="Anar adalt"> <i class="arrow up"></i> </button>
+
 </div>
 </body>
 </html>
