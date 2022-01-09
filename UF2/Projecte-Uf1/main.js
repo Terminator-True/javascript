@@ -2,42 +2,87 @@
 $(document).ready(function(){
     $('.slider').bxSlider();
   });
-
+var respostas_correctes=[];
 document.addEventListener("DOMContentLoaded",function(){
+
+  cambiar_color(localStorage.getItem("color"))
+  var today = new Date();
+  var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+
   // Validació del Formulari
   const form  = document.getElementsByTagName('form')[0]
-  const emailError = document.getElementById('emailError')
-  console.log(emailError)
-
   var email = form["email"];
   var nom = form["nom"];
   var cognoms = form["cognoms"];
   var data = form["data"];
   var edat = form["edat"];
-  email.addEventListener('input', function (event) {
-    if (email.validity.valid) {
-      emailError.innerHTML = ''; 
-      emailError.className = 'error';
-    } else {
-      showError();
-      email.style.border = "solid #ee5b41"
-      console.log("gola")
-
+  var correctes= 0;
+  nom.addEventListener("blur",function(){
+    const error = document.getElementById('nomError')
+    if (/^([a-zA-Z ]{1,})$/.test(nom.value)) {
+      error.innerText=""
+      error.classList.remove("error")
+    }else if(nom.value==""){
+      error.classList.add("error")
+      error.innerText="Error, Fa falta escriure un nom"
+    }else{
+      error.classList.add("error")
+      error.innerText="Error, caràcters incorrectes"
     }
-  function showError() {
-    if(email.validity.valueMissing) {
-      emailError.textContent = 'Error, fa falta escriure un correu';
-    } else if(email.validity.typeMismatch) {
-        emailError.textContent = 'Error, fa falta escriure un correu vàlid';
+  });
+
+  cognoms.addEventListener("blur",function(){
+    const error = document.getElementById('cognomError')
+    if (/^([a-zA-Z ]{1,})$/.test(cognoms.value)) {
+      error.innerText=""
+      error.classList.remove("error")
+      correctes++;
+    }else if(cognoms.value==""){
+      error.classList.add("error")
+      error.innerText="Error, Fa falta escriure un cognom"
+    }else{
+      error.classList.add("error")
+      error.innerText="Error, caràcters incorrectes"
     }
-    emailError.className = 'error activo';
-}
-});
+  });
+  
+  data.addEventListener("blur",function(){
+    const error = document.getElementById('dataerror')
+    if (/^(?:3[01]|[12][0-9]|0?[1-9])([\-/.])(0?[1-9]|1[1-2])\1\d{4}$/.test(data.value)) {
+      var data_naix = new Date(data.value);
+      error.innerText=""
+      error.classList.remove("error")
+      var resta = today.getTime() - data_naix.getTime()
+      var num_edat=Math.round(resta/(1000*60*60*24*365))
+      edat.value=num_edat;
+      correctes++;
+    }else if(data.value==""){
+      error.classList.add("error")
+      error.innerText="Error, Fa falta escriure una data"
+    }else{
+      error.classList.add("error")
+      error.innerText="Error, caràcters incorrectes"
+    }
+  });
 
-  cambiar_color(localStorage.getItem("color"))
-  var today = new Date();
-  var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-
+  email.addEventListener("blur",function(){
+    const error = document.getElementById('emailError')
+    if (/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(email.value)) {
+      error.innerText=""
+      error.classList.remove("error")
+      correctes++;
+    }else if(email.value==""){
+      error.classList.add("error")
+      error.innerText="Error, Fa falta escriure un email"
+    }else{
+      error.classList.add("error")
+      error.innerText="Error, caràcters incorrectes"
+    }
+  });
+  if (correctes>=4) {
+    form.getElementById("signupbtn").disabled= false
+  }
+  
   //Botó de tornar adalt
 
   mybutton = document.getElementById("myBtn");
@@ -68,7 +113,69 @@ document.addEventListener("DOMContentLoaded",function(){
     .catch(error=>
       console.log(error)
       );
-})
+  })
+  //Api del trivial
+  fetch("https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple")
+    .then(quest => quest.json())
+    .then(quest => {
+      for (let i = 0; i < 10; i++) {
+        var respostas_html ="";
+        var div = document.createElement("div");
+        var node = document.createElement("form");
+        node.classList.add("joc")
+        node.classList.add("quests")
+        node.setAttribute("id", i);
+
+        var pregunta = "<h2>"+quest.results[i].question+"</h2>"
+        var respostas = quest.results[i].incorrect_answers
+        respostas.push(quest.results[i].correct_answer)
+        respostas_correctes.push(quest.results[i].correct_answer)
+        //Randomitza les respostas per a que siguin aleatòries
+        respostas.sort(function() { return Math.random() - 0.5 })
+        for(var key in respostas){
+          respostas_html = respostas_html.concat("<label><input type='radio' name='"+i+"' id='"+i+"' placeholder='"+respostas[key]+"' value='"+respostas[key]+"'>"+respostas[key]+"</label><br>")
+        }
+        node.innerHTML=  pregunta+respostas_html+"<p id='text_"+i+"'></p>"
+        div.appendChild(node)              
+        document.getElementById("quest").appendChild(div)
+    }
+    var boto = document.createElement("button")
+    boto.classList.add("avaluar")
+    boto.innerText="Avaluar"
+    boto.addEventListener("click",function(){validar()})
+    document.getElementById("quest").appendChild(boto)
+    })
+
+function validar() {
+  console.log(respostas_correctes)
+  i=0;
+  j=0;
+  acabat=false
+  var forms = document.getElementsByClassName("quests")
+  do {
+    j=0
+      while (j<4) {
+        if(forms[i][j].checked){
+          if (forms[i][j].value==respostas_correctes[i]) {
+            var name = "text_"+i
+            document.getElementById(name).style.color="#4fee41"  
+            document.getElementById(name).innerText="Correcte"
+          }else{
+            var name = "text_"+i
+            document.getElementById(name).style.color="#ee5b41"  
+            document.getElementById(name).innerText="Incorrecte, la correcte es: "+respostas_correctes[i]
+          }
+      }
+        j++
+        correcte=false
+      }
+    i++
+    if (i==10) {
+      acabat=true
+    }
+  } while (acabat==false);
+
+}
 
 //Mostrar més informació
 function Informacio(calidad,nota,releasedate,steam,reseñas) {
@@ -103,6 +210,7 @@ function tencar() {
   }
 }
 
+
 function topFunction() {
   document.documentElement.scrollTop = 0;
 }
@@ -121,20 +229,9 @@ function currentTime() {
   let date = new Date();
   let time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() ;
   document.getElementById("clock").innerHTML = "        <span onclick='tencar_rellotge()' class='close' title='Close Modal'>&times;</span><h1>"+time+"</h1>"; 
-  let t = setTimeout(function(){ currentTime() }, 1000);
+  let t = setTimeout(function(){ currentTime() }, 5000);
 }
 
 function tencar_rellotge() {
   document.getElementById('clock').style.display='none'  
-}
-
-
-function validar() {
-  form.addEventListener('submit', function (event) {
-  
-    if(!email.validity.valid) {
-      showError();
-      event.preventDefault();
-    }
-  });
 }

@@ -83,7 +83,6 @@
     display: inline-block;
     width: 370px;
     text-align: center;
-    font-family: arial;
   }
   .joc image{
     margin: auto;
@@ -242,7 +241,7 @@
   display: none;
 }
 
-input[type=text], input[type=password] {
+input[type=text] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -306,7 +305,7 @@ hr {
   resize: vertical;
 }
 input:invalid{
-  border-color: #900;
+  border-color: #f44336;
   background-color: #FDD;
 }
 
@@ -316,20 +315,37 @@ input:focus:invalid {
 
 .error {
   width : 100%;
-  padding: 0;
-
-  font-size: 80%;
+  padding: 10px;
   color: white;
-  background-color: #900;
+  background-color: #f44336;
   border-radius: 0 0 5px 5px;
-
   box-sizing: border-box;
 }
 
 .error.active {
   padding: 0.3em;
 }
-
+#quest{
+  display: none;
+}
+.avaluar{
+  background-color: #f44336;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+.quests{
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    width: 370px;
+    text-align: center;
+}
 @-webkit-keyframes animatezoom {
   from {-webkit-transform: scale(0)} 
   to {-webkit-transform: scale(1)}

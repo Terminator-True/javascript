@@ -18,7 +18,8 @@
   </div>
 
   <div class="navbar">
-    <button><a href="#">Home</a></button>
+    <button onclick="document.getElementById('principal').style.display='block';document.getElementById('quest').style.display='none';document.getElementById('form').style.display='none'" >Home</button>
+    <button onclick="document.getElementById('quest').style.display='block';document.getElementById('principal').style.display='none'">Questionari</button>
     <button onclick="document.getElementById('clock').style.display='block';currentTime();">Rellotge</button>
     <button class="right" onclick="document.getElementById('form').style.display='block';document.getElementById('principal').style.display='none'"><a href="#form">Registrar-se</a></button>
 
@@ -44,10 +45,10 @@
               <hr>
               <label for="Nom"><b>Nom</b></label>
               <input type="text" placeholder="Nom" id="nom" >
-
+              <p id="nomError"></p>
               <label for="Cognoms"><b>Cognoms</b></label>
               <input type="text" placeholder="Cognoms" id="cognoms" >
-
+              <p id="cognomError"></p>
               <label for="email"><b>Email</b></label>
               <input type="text" placeholder="Email" id="email" >
               <p id="emailError"></p>
@@ -56,17 +57,22 @@
                 <option value='Dona'>Dona</option>
                 <option value='Altres'>Altres</option>
               </select><br>
-              <label for="Data Naixament"><b>Data Naixament</b> </label>
+              <label for="Data Naixament"><b>Data Naixament (mm/dd/aaaa)</b> </label>
               <input type="text" placeholder="data" id="data" >
+              <p id="dataerror"></p>
 
               <label for="Edat"><b>Edat</b> </label>
-              <input type="text" placeholder="Edat" id="edat" >
+              <input type="text" id="edat" disabled >
+              <p id="edaterror"></p>
               <div class="clearfix">
-                <button type="submit" class="signupbtn" onclick="validar()" >Enviar</button>
+                <button id="signupbtn" type="submit" class="signupbtn" onclick="validar()" disabled >Enviar</button>
                 <button type="button" class="cancelbtn" onclick="document.getElementById('form').style.display='none';document.getElementById('principal').style.display='block'">Cancel</button>
               </div>
             </div>
           </form>
+        </div>
+        <div id="quest" >
+
         </div>
         <div id="principal">
           <h1 >Ofertes</h1>
