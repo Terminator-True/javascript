@@ -197,7 +197,7 @@ function Informacio(calidad,nota,releasedate,steam,reseñas) {
     var node = document.createElement("div");
     node.classList.add("mes-content")
     node.classList.add("animate")
-    node.innerHTML="<span onclick='tencar()' class='close' title='Close Modal'>&times;</span> <h2>Més informació</h2> <hr style='color:white;'> <p>Data de sortida: "+release_date+"</p> <p>Calitat de l'oferta: "+calidad+"</p> <p>Nota en metacritick:"+nota+"</p> <p>Nota en steam:"+steam+"</p>  <p>Número de resenyes a steam:"+reseñas+"</p>"
+    node.innerHTML="<span o nclick='tencar()' class='close' title='Close Modal'>&times;</span> <h2>Més informació</h2> <hr style='color:white;'> <p>Data de sortida: "+release_date+"</p> <p>Calitat de l'oferta: "+calidad+"</p> <p>Nota en metacritick:"+nota+"</p> <p>Nota en steam:"+steam+"</p>  <p>Número de resenyes a steam:"+reseñas+"</p>"
     document.getElementById("more").appendChild(node)
     document.getElementById('more').style.display='block'
 }
