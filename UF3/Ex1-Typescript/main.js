@@ -71,13 +71,57 @@ function despeses_salarials(treballadors) {
     treballadors.forEach(function (element) {
         total = total + element.get_sou();
     });
-    console.log(total);
     return total;
 }
+var cat = /** @class */ (function () {
+    function cat(mew) {
+        this.mew = mew;
+    }
+    cat.prototype.eat = function () {
+        console.log("gat menja");
+    };
+    cat.prototype.sleep = function () {
+        console.log("gat dorm");
+    };
+    return cat;
+}());
+var dog = /** @class */ (function () {
+    function dog(bark) {
+        this.bark = bark;
+    }
+    dog.prototype.eat = function () {
+        console.log("gos menja");
+    };
+    dog.prototype.sleep = function () {
+        console.log("gos dorm");
+    };
+    return dog;
+}());
+var bird = /** @class */ (function () {
+    function bird(tweet) {
+        this.tweet = tweet;
+    }
+    bird.prototype.eat = function () {
+        console.log("ocell menja");
+    };
+    bird.prototype.sleep = function () {
+        console.log("ocell dorm");
+    };
+    return bird;
+}());
 var guy = new persona("Joel", "Farell");
 guy.set_nom("Joan");
-//console.log(guy.get_nom_complert())
+console.log(guy.get_nom_complert());
 var persones = [new persona("Joe", "Doe").get_nom_complert(), new persona("Jane", "Dane").get_nom_complert(), new persona("George", "Smith").get_nom_complert()];
 var treballadors = [new treballador("Joe", "Doe", 1, 1000), new treballador("Jane", "Dane", 2, 1200), new treballador("George", "Smith", 3, 2500)];
-//llistar(persones)
+llistar(persones);
 console.log(despeses_salarials(treballadors));
+var gat = new cat(true);
+gat.eat();
+gat.sleep();
+var gos = new dog(true);
+gos.eat();
+gos.sleep();
+var pajaro = new bird(true);
+pajaro.eat();
+pajaro.sleep();
