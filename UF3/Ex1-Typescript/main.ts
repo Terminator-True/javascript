@@ -66,19 +66,64 @@ function despeses_salarials(treballadors:Array<treballador>) {
     return total
 }
 interface pet {
-    eat:boolean
-    sleep:boolean
+    eat():void
+    sleep():void
 }
-class cat implements pet {
-    cat:boolean
-    constructor(eat:boolean,sleep:boolean,mew:boolean) {
 
+class cat implements pet {
+    private mew:boolean
+    constructor(mew :boolean){
+        this.mew =mew;
+    }
+    public eat() {
+        console.log("gat menja");
+    }
+    public sleep() {
+        console.log("gat dorm");
     }
 }
+
+class dog implements pet{
+    private bark  :boolean;
+
+    constructor(bark  :boolean){
+        this.bark = bark;
+    }
+    public eat(){
+        console.log("gos menja")
+    }
+    public sleep(): void {
+        console.log("gos dorm")
+    }
+}
+
+class bird implements pet{
+    private tweet:boolean;
+
+    constructor(tweet :boolean){
+        this.tweet = tweet;
+    }
+    public eat(){
+        console.log("ocell menja")
+    }
+    public sleep(): void {
+        console.log("ocell dorm")
+    }
+}
+
 let guy=new persona("Joel","Farell");
 guy.set_nom("Joan")
 //console.log(guy.get_nom_complert())
 var persones = [new persona("Joe","Doe").get_nom_complert(),new persona("Jane","Dane").get_nom_complert(),new persona("George","Smith").get_nom_complert()]
 var treballadors = [new treballador("Joe","Doe",1,1000),new treballador("Jane","Dane",2,1200),new treballador("George","Smith",3,2500)]
 //llistar(persones)
-console.log(despeses_salarials(treballadors))
+//console.log(despeses_salarials(treballadors))
+var gat=new cat(true);
+gat.eat();
+gat.sleep();
+var gos=new dog(true);
+gos.eat();
+gos.sleep();
+var pajaro=new bird(true);
+pajaro.eat();
+pajaro.sleep();
