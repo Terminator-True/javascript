@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'modul6',
+    selector: '[Modul6]',
     template:`
-    <h2>Proves modul6</h2>
+    <h2>modul6</h2>
     `
 })
 export class Modul6{
