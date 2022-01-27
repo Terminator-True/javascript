@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th>Marca</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Velocitat</th>
+    </tr>
+    <tr *ngFor="let cotxe of cotxes">
+        <td>{{cotxe.marca}}</td>
+        <td>{{cotxe.model}}</td>
+        <td>{{cotxe.color}}</td>
+        <td >{{cotxe.velocitat}}</td>
+    </tr>
+</table>
