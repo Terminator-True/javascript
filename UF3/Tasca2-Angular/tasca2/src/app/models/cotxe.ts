@@ -6,7 +6,7 @@ export class cotxe {
         public color:string,
         public velocitat:number,
         public combustible:string,
+        public correComUnLlamp:boolean,
         ) {
-            
         }
 }

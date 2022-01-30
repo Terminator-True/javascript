@@ -1,18 +1,63 @@
+<hr>
+<p>Model
+<input
+type="text"
+class="form-control"
+[(ngModel)]="marca">
+Marca
+<input
+type="text"
+class="form-control"
+[(ngModel)]="model">
+Color
+<input
+type="text"
+class="form-control"
+[(ngModel)]="color">
+velocitat
+<input
+type="text"
+class="form-control"
+[(ngModel)]="velocitat">
+Combustible
+<input
+type="text"
+class="form-control"
+[(ngModel)]="com">
+
+<button
+  class="btn btn-primary"
+  (click)="AfegirCotxe()">Afegeix</button>
+  
+</p>
 <table>
-    <tr>
-        <th>Marca</th>
-        <th>Model</th>
-        <th>Color</th>
-        <th>Velocitat</th>
-        <th>Combustible</th>
-
-    </tr>
     <tr *ngFor="let cotxe of cotxes">
-        <td>{{cotxe.marca}}</td>
-        <td>{{cotxe.model}}</td>
-        <td>{{cotxe.color}}</td>
-        <td >{{cotxe.velocitat}}</td>
-        <td >{{cotxe.combustible}}</td>
-
-    </tr>
-</table>
+        <div *ngIf="cotxe.correComUnLlamp; else elseBlock">
+            <div #thenBlock style="background-color:red;font-weight:bold;" >
+                    <td>{{cotxe.model}}</td>
+                    <td>{{cotxe.marca}}</td>
+                    <td>{{cotxe.color}}</td>
+                    <td >{{cotxe.velocitat}}</td>
+                    <div [ngSwitch]="cotxe.combustible" >
+                        <td *ngSwitchCase="'gasoil'" style="background-color:brown;" >{{cotxe.combustible}}</td>
+                        <td *ngSwitchCase="'electric'" style="background-color:green;" >{{cotxe.combustible}}</td>
+                        <td *ngSwitchCase="'gasolina'" style="background-color:blue;" >{{cotxe.combustible}}</td>
+                        <td *ngSwitchCase="'hibrid'" style="background-color:green;" >{{cotxe.combustible}}</td>
+                    <td><button (click)="EliminaCotxe(cotxe.model)">Elimina</button></td>
+                    </div>
+            </div>
+        </div>
+        <ng-template #elseBlock>
+            <div>
+                <td>{{cotxe.model}}</td>
+                <td>{{cotxe.marca}}</td>
+                <td>{{cotxe.color}}</td>
+                <td >{{cotxe.velocitat}}</td>
+                <div [ngSwitch]="cotxe.combustible" >
+                    <td *ngSwitchCase="'gasoil'" style="background-color:brown;" >{{cotxe.combustible}}</td>
+                    <td *ngSwitchCase="'electric'" style="background-color:green;" >{{cotxe.combustible}}</td>
+                    <td *ngSwitchCase="'gasolina'" style="background-color:blue;" >{{cotxe.combustible}}</td>
+                    <td *ngSwitchCase="'hibrid'" style="background-color:green;" >{{cotxe.combustible}}</td>
+                    <td><button (click)="EliminaCotxe(cotxe.model)">Elimina</button></td>
+                </div>
+            </div>
