@@ -17,11 +17,11 @@ export class CotxesComponent implements OnInit {
     hibrid:"hibrid",
     gasolina:"gasolina"
   }
-  public model:string="";
-  public marca:string="";
-  public color:string="";
-  public velocitat:number=0;
-  public com:string="";
+  model="";
+  marca="";
+  color="";
+  velocitat=0;
+  com="";
 
   constructor() { 
     this.cotxes = [
