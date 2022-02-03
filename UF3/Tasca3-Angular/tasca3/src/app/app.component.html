@@ -1,0 +1,15 @@
+ <div>
+
+    <h1>{{ title }}</h1>
+
+    <nav>
+        <a [routerLink]="['/home']" [routerLinkActive]="['marcat']"> Home </a>
+        <a [routerLink]="['/modul6']" [routerLinkActive]="['marcat']"> Modul6 </a>
+        <a [routerLink]="['/cotxes']" [routerLinkActive]="['marcat']"> Cotxes </a>
+        <a [routerLink]="['/exemple2']" [routerLinkActive]="['marcat']"> exemple2 </a>
+        <br>
+        <router-outlet></router-outlet>
+
+    </nav>
+ </div>
+
