@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute,Router,Params } from '@angular/router';
 import { cotxe } from '../models/cotxe';
 
 
@@ -23,16 +24,29 @@ export class CotxesComponent implements OnInit {
   velocitat=0;
   com="";
 
-  constructor() { 
+  constructor(
+    private _route:ActivatedRoute,
+    private _router:Router
+  ) { 
     this.cotxes = [
       new cotxe("RX8","Mazda","Vermell",150,this.combustible.gasolina,true),
       new cotxe("Impreza","Subaru","Blau",130,this.combustible.gasolina,true),
       new cotxe("Tycan","Porsche","Vermell",180,this.combustible.electric,true),
       new cotxe("Civic","Honda","Negre",120,this.combustible.gasoil,false)
     ]
+
   }
 
   ngOnInit(): void {
+    this._route.queryParams.subscribe((params:Params) => {
+      this.model = params["model"]
+      this.marca = params["marca"]
+      this.color = params["color"]
+      this.velocitat = params["velocitat"]
+      this.com = params["combustible"]
+      console.log(params)
+      this.AfegirCotxe()
+    })
     console.log(this.cotxes)
   }
   AfegirCotxe(){

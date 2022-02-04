@@ -1,4 +1,3 @@
-<hr>
 <p>Model
 <input
 type="text"
@@ -30,6 +29,9 @@ class="form-control"
   (click)="AfegirCotxe()">Afegeix</button>
   
 </p>
+
+<a href="http://localhost:4200/cotxe?model=Defender&marca=LandRover&color=blue&velocitat=65&combustible=gasoil">C   otxe</a>
+
 <table>
     <tr *ngFor="let cotxe of cotxes">
         <div *ngIf="cotxe.correComUnLlamp; else elseBlock">
