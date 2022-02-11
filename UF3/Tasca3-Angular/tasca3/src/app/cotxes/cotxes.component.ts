@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router,Params } from '@angular/router';
 import { cotxe } from '../models/cotxe';
-
+import { cotxeService } from '../services/cotxe.service';
 
 @Component({
   selector: 'app-cotxes',
   templateUrl: './cotxes.component.html',
-  styleUrls: ['./cotxes.component.css']
+  styleUrls: ['./cotxes.component.css'],
+  providers: [cotxeService]
 })
 export class CotxesComponent implements OnInit {
 
@@ -26,7 +27,8 @@ export class CotxesComponent implements OnInit {
 
   constructor(
     private _route:ActivatedRoute,
-    private _router:Router
+    private _router:Router,
+    private _cotxesService:cotxeService
   ) { 
     this.cotxes = [
       new cotxe("RX8","Mazda","Vermell",150,this.combustible.gasolina,true),
@@ -38,6 +40,7 @@ export class CotxesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cotxes=this._cotxesService.getCotxes();
     this._route.queryParams.subscribe((params:Params) => {
       this.model = params["model"]
       this.marca = params["marca"]
