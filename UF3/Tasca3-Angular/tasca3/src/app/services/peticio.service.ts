@@ -12,9 +12,9 @@ export class PeticionsSerivice{
     constructor(
         private _http: HttpClient
     ){
-        this.url = "https://restcountries.com/"
+        this.url = "https://restcountries.com/v3.1"
     }
     getCountry(pais="spain"):Observable<any>{
-        return this._http.get(this.url+"/"+pais);
+        return this._http.get(this.url+"/name/"+pais);
     }
 }

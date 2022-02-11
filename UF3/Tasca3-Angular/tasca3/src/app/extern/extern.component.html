@@ -1,1 +1,25 @@
-<p>extern works!</p>
+<input
+type="text"
+class="form-control"
+[(ngModel)]="country">
+
+<button
+  class="btn btn-primary"
+  (click)="Get_Country()">Busca</button>
+<ul>
+    <li>
+        {{dades[0]}}
+    </li>
+    <li>
+        {{dades[1]}}
+    </li>
+    <li>
+      <img src="{{dades[2]}}" alt="">  
+    </li>
+    <li>
+        {{dades[3]}}
+    </li>
+</ul>
+<div *ngIf="_error!=''">
+    <h3>{{_error}}</h3>
+</div>
