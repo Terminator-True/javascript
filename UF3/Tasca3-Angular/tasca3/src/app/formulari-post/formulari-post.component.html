@@ -1,0 +1,38 @@
+<input
+type="text"
+class="form-control"
+[(ngModel)]="userID">
+<button
+  class="btn btn-primary"
+  (click)="get_user()">Busca</button>
+
+<div *ngFor="let post of posts">
+    <ul>
+        <li>
+            <h4>ID usuari</h4>
+            {{post["userId"]}}
+        </li>
+        <li>
+            <h4>ID post</h4>
+            {{post["id"]}}
+        </li>
+        <li>
+            <h4>Títol</h4>
+            {{post["title"]}}
+        </li>        
+        <li>
+            <h4>Body</h4>
+
+            {{post["body"]}}
+        </li>    
+    </ul>
+</div>
+
+<input
+type="text"
+class="form-control"
+[(ngModel)]="marca">
+
+<div *ngIf="_error!=''">
+    <h3>{{_error}}</h3>
+</div>

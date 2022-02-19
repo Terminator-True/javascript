@@ -12,6 +12,10 @@ import { HomeComponent } from './home/home.component';
 import { Modul6 } from './Modul6/Modul6.component';
 import { UnitatsFormativesComponent } from './unitats-formatives/unitats-formatives.component';
 import { ExternComponent } from './extern/extern.component';
+import { DescompteComponent } from './descompte/descompte.component';
+import { FormulariPostComponent } from './formulari-post/formulari-post.component';
+
+import { descompte } from './pipes/descompte.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { ExternComponent } from './extern/extern.component';
     CotxesComponent,
     Modul6,
     UnitatsFormativesComponent,
-    ExternComponent
+    ExternComponent,
+    DescompteComponent,
+    descompte,
+    FormulariPostComponent
   ],
   imports: [
     BrowserModule,

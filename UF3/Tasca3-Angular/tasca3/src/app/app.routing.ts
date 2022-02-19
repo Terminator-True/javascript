@@ -7,7 +7,9 @@ import { CotxesComponent } from "./cotxes/cotxes.component";
 import { UnitatsFormativesComponent } from "./unitats-formatives/unitats-formatives.component";
 import { HomeComponent } from "./home/home.component";
 import { ExternComponent } from "./extern/extern.component"
- 
+import { DescompteComponent } from "./descompte/descompte.component";
+import { FormulariPostComponent } from "./formulari-post/formulari-post.component";
+
 const appRoutes: Routes = [
    {path: '', component: HomeComponent},
    {path: 'modul6', component: Modul6},
@@ -16,6 +18,8 @@ const appRoutes: Routes = [
    {path: 'cotxe/:model/:marca/:color/:velocitat/:combustible', component: CotxesComponent},
    {path: 'unitats-formatives', component: UnitatsFormativesComponent},
    {path: 'extern', component:ExternComponent },
+   {path: 'descompte', component:DescompteComponent },
+   {path: 'FormulariPost', component:FormulariPostComponent },
    {path: '**', component: HomeComponent}
 ]
  

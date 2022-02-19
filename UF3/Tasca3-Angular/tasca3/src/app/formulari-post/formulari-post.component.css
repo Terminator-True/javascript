@@ -1,0 +1,23 @@
+
+ul {
+    /*background: #727880;*/
+    border-color: rgb(124, 124, 124);
+    border-style: solid;
+    padding: 20px;
+    list-style: none;
+    width: 25%;
+    margin: auto;
+    margin-bottom: 5px;
+  }
+
+  
+ul li {
+    background: #b6b6b6;
+    color: darblue;
+    margin: 5px;
+}
+
+h4{
+background-color: rgb(111, 111, 111);
+text-align: center;
+}
