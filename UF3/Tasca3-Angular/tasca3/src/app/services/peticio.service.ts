@@ -22,4 +22,9 @@ export class PeticionsSerivice{
     getUser(id="1",url="https://jsonplaceholder.typicode.com/posts"):Observable<any>{
         return this._http.get(url+"?userId="+id);
     }
+    addPost(post:any,url="https://jsonplaceholder.typicode.com/posts"):Observable<any>{
+        let params = JSON.stringify(post);
+        let headers = new HttpHeaders().set('Content-type','application/json; charset=UTF-8')
+        return this._http.post(url,params,{headers: headers})
+    }
 }

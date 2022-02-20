@@ -28,38 +28,42 @@ class="form-control"
     </ul>
 </div>
 <h3>New Post</h3>
-<form #formContacte="ngForm" (ngSubmit)="onSubmit()">
+<form #formPost="ngForm" (ngSubmit)="onSubmit(formPost)">
     Títol:
     <input
     type="text"
     class="form-control"
-    name="title"
+    name="titol"
     #titol="ngModel"
-    [(ngModel)]="post.title">
-
-    <div *ngIf="{{ post.title | lowercase }}">
-        <h3>El titol ha de ser en minúscules</h3>
-    </div>
+    required
+    pattern="[a-z]+"
+    [(ngModel)]="post.title ">
+    
+    <span *ngIf="titol.touched && !titol.valid">
+        El títol ha de estar escrit en minúscules 
+    </span>
     <br>
     <br>
 
     Cos:
-    <input
+    <textarea
     type="text"
     class="form-control"
     name="body"
     #body="ngModel"
-    [(ngModel)]="post.body">
-    
-    <div *ngIf="{{ post.body | lowercase }}">
-        <h3>El cos ha de ser en minuscúles</h3>
-    </div>
+    required
+    pattern="[a-z ]+"
+    [(ngModel)]="post.body"></textarea>
 
+    <span *ngIf="body.touched && !body.valid">
+         El cos ha de estar escrit en minúscules 
+    </span>
     <br>
     <br>
 
-    <button type="submit">Puja</button>
+    <button type="submit" [disabled]="!formPost.form.valid">Puja</button>
 </form>
+<!--
 <div *ngIf="_error!=''">
-    <h3>{{_error}}</h3>
-</div>
+    <h3>{{ _error }}</h3>
+</div>-->

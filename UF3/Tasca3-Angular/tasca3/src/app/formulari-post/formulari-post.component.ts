@@ -17,6 +17,7 @@ export class FormulariPostComponent implements OnInit {
   public titol:string;
   public body:string;
   public post:Post;
+  public missatge:string;
 
   constructor(
     private _peticionsService:PeticionsSerivice
@@ -29,7 +30,8 @@ export class FormulariPostComponent implements OnInit {
     //Exercici4
     this.titol=""
     this.body=""
-    this.post =  new Post("","","","")
+    this.post =  new Post("","",1)
+    this.missatge = ""
   }
 
   ngOnInit(): void {
@@ -49,8 +51,18 @@ export class FormulariPostComponent implements OnInit {
           }      
     )
   }
-  onSubmit() {
+  onSubmit(form: any): void {
     console.log(this.post)
+    this._peticionsService.addPost(form).subscribe(
+      response => {
+        this.missatge="Post afegit"
+        form.reset()
+      },
+      error =>{
+        this.missatge = "Error al afegir el post"
+      }
+    )
+
   }
 
 }
