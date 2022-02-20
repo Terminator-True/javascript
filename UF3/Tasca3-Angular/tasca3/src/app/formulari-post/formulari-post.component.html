@@ -27,12 +27,39 @@ class="form-control"
         </li>    
     </ul>
 </div>
+<h3>New Post</h3>
+<form #formContacte="ngForm" (ngSubmit)="onSubmit()">
+    Títol:
+    <input
+    type="text"
+    class="form-control"
+    name="title"
+    #titol="ngModel"
+    [(ngModel)]="post.title">
 
-<input
-type="text"
-class="form-control"
-[(ngModel)]="marca">
+    <div *ngIf="{{ post.title | lowercase }}">
+        <h3>El titol ha de ser en minúscules</h3>
+    </div>
+    <br>
+    <br>
 
+    Cos:
+    <input
+    type="text"
+    class="form-control"
+    name="body"
+    #body="ngModel"
+    [(ngModel)]="post.body">
+    
+    <div *ngIf="{{ post.body | lowercase }}">
+        <h3>El cos ha de ser en minuscúles</h3>
+    </div>
+
+    <br>
+    <br>
+
+    <button type="submit">Puja</button>
+</form>
 <div *ngIf="_error!=''">
     <h3>{{_error}}</h3>
 </div>
