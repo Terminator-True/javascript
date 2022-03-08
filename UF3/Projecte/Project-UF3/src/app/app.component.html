@@ -1,0 +1,14 @@
+<div id="menu">
+    <h1>{{ title }}</h1>	
+    <nav>
+        <a [routerLink]="['/']" [routerLinkActive]="['marca']" > about </a>
+        &nbsp;
+        <a [routerLink]="['/projects']"[routerLinkActive]="['marca']"> projects </a>
+        &nbsp;
+        <a [routerLink]="['/create-project']"[routerLinkActive]="['marca']"> create-project </a>
+        &nbsp;
+        <a [routerLink]="['/contact']"[routerLinkActive]="['marca']"> contact </a>
+        &nbsp;
+    </nav>
+   </div>
+<router-outlet></router-outlet>
