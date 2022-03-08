@@ -1,1 +1,55 @@
-<p>create works!</p>
+<div class="container contact">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="contact-info">
+				<img src="https://cdn-icons-png.flaticon.com/512/633/633636.png" style="width: 100px;" alt="image"/>
+				<h2>Crear Projecte</h2>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="contact-form">
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="fname">Nom:</label>
+				  <div class="col-sm-10">          
+					<input matInput type="text" class="form-control" id="name" placeholder="Nom del projecte" name="name" [(ngModel)]="titol" required>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="lname">Descripció:</label>
+				  <div class="col-sm-10">           
+					<input type="text" class="form-control" id="descripcio" placeholder="Descripció del projecte" name="descripcio"  [(ngModel)]="descripcio" required>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="email">Categoría:</label>
+				  <div class="col-sm-10">
+					<input type="text" class="form-control" id="categoria" placeholder="Categpría del projecte" name="categoria" [(ngModel)]="categoria" required>
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="comment">Any:</label>
+				  <div class="col-sm-10">
+					<input type="number" class="form-control" id="any" placeholder="Any de creació del projecte" name="any" [(ngModel)]="any" required>
+				  </div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="comment">Llenguatges:</label>
+					<div class="col-sm-10">
+					  <input type="text" class="form-control" id="llenguatges" placeholder="Llenguatges utilitzats al projecte" name="llenguatges" [(ngModel)]="llenguatges" required>
+					</div>
+				  </div>
+				<div class="form-group">        
+				  <div class="col-sm-offset-2 col-sm-10">
+					<button  (click)="onSubmit()" type="submit" class="btn btn-default">Crear</button>
+				  </div>
+				</div>
+				<div [ngStyle]="{'visibility': estado}" class="alert alert-danger alert-dismissible fade show" role="alert">
+					{{error}}
+					<button type="button" (click)="tanca()" class="close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				  </div>
+			</div>
+		</div>
+	</div>
+</div>

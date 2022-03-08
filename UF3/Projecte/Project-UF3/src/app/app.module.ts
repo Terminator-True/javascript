@@ -8,7 +8,12 @@ import { ProjectsComponent } from './projects/projects.component';
 import { CreateComponent } from './create/create.component';
 import { ContactComponent } from './contact/contact.component';
 import { ErrorComponent } from './error/error.component';
+import { routing } from './app.routing';
+import { ProjecteService } from './services/project.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +21,14 @@ import { ErrorComponent } from './error/error.component';
     ProjectsComponent,
     CreateComponent,
     ContactComponent,
-    ErrorComponent
+    ErrorComponent  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    routing,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
