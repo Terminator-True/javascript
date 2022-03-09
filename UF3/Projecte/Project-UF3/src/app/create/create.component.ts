@@ -10,8 +10,9 @@ import { ProjecteService } from '../services/project.service';
 export class CreateComponent implements OnInit {
   
   public title:string;
-  public project:Project;
   public error:string;
+
+  public success:string;
   public estado:string;
 
   public titol:string;
@@ -33,7 +34,7 @@ export class CreateComponent implements OnInit {
     this.any=0;
     this.llenguatges="";
     this.title="Crear Projecte";
-    this.project = new Project("","","","",2022,"","");
+    this.success="hidden"
    }
 
   ngOnInit(): void {
@@ -43,13 +44,20 @@ export class CreateComponent implements OnInit {
     this.estado="hidden";
   }
   onSubmit() {
-    this.omplert= this.titol!="" && this.descripcio!="" && this.categoria!="" && this.any!=0 && this.any==null && this.llenguatges!="" ? true:false
+    this.omplert= this.titol!="" && this.descripcio!="" && this.categoria!="" && this.any!=0 || this.any==null && this.llenguatges!="" ? true:false
     if (!this.omplert) {
       this.estado="visible";
       this.error='Fa falta omplir tots els camps'
     }else{
       this.estado="hidden";
       this.error="";
+      console.log(new Project("",this.titol,this.descripcio,this.categoria,2022,this.llenguatges,""))
+      this._projectService.saveProject(new Project("",this.titol,this.descripcio,this.categoria,2022,this.llenguatges,"")).subscribe(
+        result=>{
+          //console.log(result)
+
+      }, error =>{console.log(error)})
+      
     }
   }
 }
