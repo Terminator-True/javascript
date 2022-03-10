@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../models/project';
+import { Global } from '../services/global';
 import { ProjecteService } from '../services/project.service';
+import { UploadService } from '../services/upload.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -10,54 +12,56 @@ import { ProjecteService } from '../services/project.service';
 export class CreateComponent implements OnInit {
   
   public title:string;
-  public error:string;
 
-  public success:string;
-  public estado:string;
+  public projecte:Project;
+  
+  public succes_status:string;
 
-  public titol:string;
-  public descripcio:string;
-  public categoria:string;
-  public any:number;
-  public llenguatges:string;
+  public filesToUpload:any;
 
-  public omplert:boolean;
+  public project_desat:any;
+
   constructor(
-    private _projectService:ProjecteService
+    private _projectService:ProjecteService,
+    private _uploadService:UploadService
   ) {
-    this.estado="hidden";
-    this.error="";
-    this.omplert=false;
-    this.titol="";
-    this.descripcio="";
-    this.categoria="";
-    this.any=0;
-    this.llenguatges="";
+    this.projecte=new Project("","","","",2022,"","");
+
     this.title="Crear Projecte";
-    this.success="hidden"
+
+    this.succes_status="none";
    }
 
   ngOnInit(): void {
   }
 
   tanca(){
-    this.estado="hidden";
+    this.succes_status="none"
   }
-  onSubmit() {
-    this.omplert= this.titol!="" && this.descripcio!="" && this.categoria!="" && this.any!=0 || this.any==null && this.llenguatges!="" ? true:false
-    if (!this.omplert) {
-      this.estado="visible";
-      this.error='Fa falta omplir tots els camps'
-    }else{
-      this.estado="hidden";
-      this.error="";
-      console.log(new Project("",this.titol,this.descripcio,this.categoria,2022,this.llenguatges,""))
-      this._projectService.saveProject(new Project("",this.titol,this.descripcio,this.categoria,2022,this.llenguatges,"")).subscribe(
+  fileChangeEvent(fileInput: any){
+    console.log(fileInput)
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+  }
+  onSubmit(form:any) {
+    this._projectService.saveProject(this.projecte).subscribe(
         result=>{
-          //console.log(result)
+          this.project_desat=result;
+          if ( this.project_desat.project._id !="") {
+            this._uploadService.makeFileRequest(
+              Global.url+'/upload-image/'+this.project_desat.project._id,
+              [],
+              this.filesToUpload,
+              'image'
+            ).then((res:any) => {
+              console.log(res)
+            })
+          }
 
+          form.reset()
+          //console.log(result)
+          this.succes_status=""
       }, error =>{console.log(error)})
       
     }
-  }
+  
 }

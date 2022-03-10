@@ -1,3 +1,3 @@
 export var Global= {
-    url: "http://10.42.18.100:3700/api"
+    url: "http://192.168.1.77:3700/api"
 }
