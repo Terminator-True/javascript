@@ -21,7 +21,7 @@ import {FormsModule} from "@angular/forms";
     ProjectsComponent,
     CreateComponent,
     ContactComponent,
-    ErrorComponent  
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

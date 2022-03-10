@@ -26,5 +26,8 @@ export class ProjecteService{
         console.log(params)
         return this._http.post(this.url+'/save-project', params, {headers: headers})
     }
-   
+    
+    getProjects(){
+        return this._http.get(this.url+"/projects/");
+    }
 }   
