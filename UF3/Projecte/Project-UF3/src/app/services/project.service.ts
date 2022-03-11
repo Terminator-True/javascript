@@ -30,4 +30,7 @@ export class ProjecteService{
     getProjects(){
         return this._http.get(this.url+"/projects/");
     }
+    getProject(id:string){
+        return this._http.get(this.url+"/project/"+id)
+    }
 }   

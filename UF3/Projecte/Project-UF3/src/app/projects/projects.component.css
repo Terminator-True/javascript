@@ -13,7 +13,7 @@
     margin-bottom: 2rem;
   }
   
-  .btn {
+  .card .btn {
     border: 5px solid;
     border-image-slice: 1;
     background: var(--gradient) !important;
@@ -33,5 +33,5 @@
     text-decoration: underline;
   }
   .card-title{
-    
+    color:white;
   }

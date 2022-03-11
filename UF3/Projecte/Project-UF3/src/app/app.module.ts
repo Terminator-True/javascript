@@ -14,6 +14,7 @@ import { ProjecteService } from './services/project.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import {FormsModule} from "@angular/forms";
+import { DetailComponent } from './detail/detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
     ProjectsComponent,
     CreateComponent,
     ContactComponent,
-    ErrorComponent
+    ErrorComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { ProjectsComponent } from "./projects/projects.component";
 import { CreateComponent } from "./create/create.component";
 import { ContactComponent } from "./contact/contact.component";
 import { ErrorComponent } from "./error/error.component";
+import { DetailComponent } from "./detail/detail.component";
 
 const appRoutes: Routes = [
    {path: '', component: AboutComponent},
@@ -13,8 +14,9 @@ const appRoutes: Routes = [
    {path: 'projects', component: ProjectsComponent},
    {path: 'create-project', component: CreateComponent},
    {path: 'contact', component: ContactComponent},
+   {path: 'detail/:id', component: DetailComponent},
    {path: '**', component: ErrorComponent}
 ]
- 
+
 export const appRoutingProviders: any[]=[];
 export const routing:ModuleWithProviders<any> = RouterModule.forRoot(appRoutes);
