@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {FormsModule} from "@angular/forms";
 import { DetailComponent } from './detail/detail.component';
+import { UpdateComponent } from './update/update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { DetailComponent } from './detail/detail.component';
     CreateComponent,
     ContactComponent,
     ErrorComponent,
-    DetailComponent
+    DetailComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

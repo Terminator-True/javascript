@@ -33,4 +33,13 @@ export class ProjecteService{
     getProject(id:string){
         return this._http.get(this.url+"/project/"+id)
     }
+    deleteProject(id:string){
+        return this._http.delete(this.url+"/delete-project/"+id)
+    }
+    updateProject(project: Project, id:string){
+        let params = JSON.stringify(project)
+        let headers = new HttpHeaders().set('Content-Type','application/json')
+        console.log(params)
+        return this._http.put(this.url+'/update-project/'+id, params, {headers: headers})
+    }
 }   
