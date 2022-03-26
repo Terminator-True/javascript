@@ -22,7 +22,6 @@ export class DetailComponent implements OnInit {
   ) { this.url=Global.url }
 
   ngOnInit(): void {
-   
     this._route.params.subscribe((params: Params)=>{
       this.id=params['id']
       this._projecteService.getProject(this.id).subscribe(project=>{

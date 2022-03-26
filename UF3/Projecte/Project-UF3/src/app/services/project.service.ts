@@ -20,7 +20,6 @@ export class ProjecteService{
     }
 
     saveProject(project: Project){
-    
         let params = JSON.stringify(project)
         let headers = new HttpHeaders().set('Content-Type','application/json')
         console.log(params)

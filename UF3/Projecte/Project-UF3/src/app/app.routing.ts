@@ -17,7 +17,7 @@ const appRoutes: Routes = [
    {path: 'contact', component: ContactComponent},
    {path: 'detail/:id', component: DetailComponent},
    {path: 'update/:id', component: UpdateComponent},
-   //{path: '**', component: ErrorComponent}
+   {path: '**', component: ErrorComponent}
 ]
 
 export const appRoutingProviders: any[]=[];
