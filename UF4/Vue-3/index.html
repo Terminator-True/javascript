@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Reactivity in Action</h1>
+    </header>
+    <section id="assignment">
+      <button v-on:click="add(5)" >Add 5</button>
+      <button v-on:click="add(1)">Add 1</button>
+      <!-- 1) Conecta els 2 botons per calcular la suma  -->
+      <!-- Mostra : Encara no fincs que la suma no arribi al resultat de 37-->
+      <!--Mostra: T'has passat si la suma és mes gran que 37  -->
+      <p>Result: {{ result }} {{ state }}</p>
+      <!-- 2) Busca canvis en la "suma" i resseteja el valor a 0 després de 5 segons.
+              Nota: this dins de setTimeout et portarà problemes, assigna a una altra variable
+              https://stackoverflow.com/questions/2130241/pass-correct-this-context-to-settimeout-callback 
+       -->
+    </section>
+  </body>
+</html>
