@@ -30,15 +30,50 @@
     </div>
 </template>
 <script>
+/*import { required,minLenght,maxLength } from "vuelidate/lib/validators";*/
 export default {
   name: 'Form_Component',
   props: {
     msg: String,
     moduls: Array
-  },
+  },/*
   validations:{
-     
-  },
+     modul:{
+         Modul:{
+             required,
+             minLenght: minLenght(1),
+             maxLength: maxLength(2)
+         },
+          Nom: {
+             required
+         },
+          hores: {
+             required,
+             minLenght: minLenght(1),
+             maxLength: maxLength(3)
+         },
+          horesLLD: {
+             required,
+             minLenght: minLenght(1),
+             maxLength: maxLength(3)
+         },
+          ECTS: {
+             required,
+             minLenght: minLenght(1),
+             maxLength: maxLength(2)
+         },
+          UFs: {
+             required,
+             minLenght: minLenght(1),
+             maxLength: maxLength(1)
+         },
+          Fetes: {
+             required,
+             minLenght: minLenght(1),
+             maxLength: maxLength(1)
+         },
+     }
+  },*/
   data(){
     return{
         repetit:false,
@@ -56,14 +91,17 @@ export default {
   methods: {
     setData(){
       var moduls_existents=this.moduls.map((modul)=>{return modul.Modul})
+      var moduls_new=this.moduls
       for (const id in moduls_existents) {
-          console.log(this.repetit)
+          //console.log(this.repetit)
           if (id===this.modul.Modul) {
               this.repetit=true
               return
           }
       }
-
+      moduls_new[moduls_new.length]=this.modul
+      this.$emit("Moduls",moduls_new)
+      setTimeout(()=>{this.$router.go("/list")},200)
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="container" @load="info()" >
+  <div class="container">
       <div v-if="mode=='list'" >
         <h2>{{ msg }}</h2>
         <ul class="list-group"  v-for="modul in Moduls" :key="modul" >
@@ -18,7 +18,8 @@
           </li>
         </ul>
       </div>
-        <Form_Component :moduls="Moduls" v-if="mode=='form'"></Form_Component>
+        <Form_Component :moduls="Moduls" 
+        v-if="mode=='form'"></Form_Component>
     </div>
 </template>
 
@@ -27,8 +28,10 @@ import Form_Component from './Form_Component.vue';
 
 export default {
   name: 'Home_Component',
+  emits: ['Moduls'],
   mounted(){
     this.mode=this.$route.params.mode
+
   },
   props: {
     msg: String
